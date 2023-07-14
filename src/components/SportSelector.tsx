@@ -3,14 +3,16 @@ interface SportsSelectorComponentProps {
 }
 
 const SportSelector: React.FC<SportsSelectorComponentProps> = ({ sportsList }) => {
+  const RenderedSports = sportsList.map(
+    (sport: string, index: number): JSX.Element => <p key={index}>{sport}</p>
+  );
+
   return (
     <>
       <div>
         <h1>Game Stats</h1>
         <p>Please select a sport to continue</p>
-        {sportsList.map((sport: string, index: number) => (
-          <p key={index}>{sport}</p>
-        ))}
+        {}
       </div>
     </>
   );
