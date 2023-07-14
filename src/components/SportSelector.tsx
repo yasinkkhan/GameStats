@@ -2,12 +2,20 @@ import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 
 interface SportsSelectorComponentProps {
   sportsList: string[];
+  selectedSportHandler: (sport: string) => void;
 }
 
-const SportSelector: React.FC<SportsSelectorComponentProps> = ({ sportsList }): JSX.Element => {
+const SportSelector: React.FC<SportsSelectorComponentProps> = ({
+  sportsList,
+  selectedSportHandler,
+}): JSX.Element => {
+  const handleClick = (sport: string) => {
+    selectedSportHandler(sport);
+  };
+
   const RenderedSports: JSX.Element[] = sportsList.map((sport: string, index: number): JSX.Element => {
     return (
-      <Card key={index} className="my-2">
+      <Card key={index} onClick={() => handleClick(sport)} className="my-2">
         <CardHeader>
           <CardTitle>{sport}</CardTitle>
         </CardHeader>
