@@ -5,7 +5,7 @@ import { useState } from 'react';
 import SportSelector from './components/SportSelector';
 
 function App() {
-  const [sportsList, setSportsList] = useState(['NBA', 'EPL', 'NHL', 'MLB', 'NFL']);
+  const [sportsList] = useState(['NBA', 'EPL', 'NHL', 'MLB', 'NFL']);
   const [selectedSport, setSelectedSport] = useState('');
 
   return (
