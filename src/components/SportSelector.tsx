@@ -1,10 +1,18 @@
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+
 interface SportsSelectorComponentProps {
   sportsList: string[];
 }
 
 const SportSelector: React.FC<SportsSelectorComponentProps> = ({ sportsList }): JSX.Element => {
   const RenderedSports: JSX.Element[] = sportsList.map((sport: string, index: number): JSX.Element => {
-    return <p key={index}>{sport}</p>;
+    return (
+      <Card key={index} className="my-2">
+        <CardHeader>
+          <CardTitle>{sport}</CardTitle>
+        </CardHeader>
+      </Card>
+    );
   });
 
   return (
