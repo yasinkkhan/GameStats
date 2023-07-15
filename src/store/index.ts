@@ -3,7 +3,7 @@ import { sportsReducer } from './slices/sportsSlice';
 
 export const store = configureStore({
   reducer: {
-    sports: sportsSlice.reducer,
+    sports: sportsReducer,
     // seasons: seasonsReducer,
     // games: gamesReducer,
     // gamesDetails: gamesDetailsReducer,
