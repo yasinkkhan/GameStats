@@ -1,16 +1,17 @@
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 
-interface SportsSelectorComponentProps {
-  sportsList: string[];
-  selectedSportHandler: (sport: string) => void;
-}
+// interface SportsSelectorComponentProps {
+//   sportsList: string[];
+//   selectedSportHandler: (sport: string) => void;
+// }
 
-const SportSelector: React.FC<SportsSelectorComponentProps> = ({
-  sportsList,
-  selectedSportHandler,
-}): JSX.Element => {
+// const SportSelector: React.FC<SportsSelectorComponentProps> = ({
+//   sportsList,
+//   selectedSportHandler,
+// }): JSX.Element => {
+const SportSelector: React.FC = (): JSX.Element => {
   const handleClick = (sport: string) => {
-    selectedSportHandler(sport);
+    // selectedSportHandler(sport);
   };
 
   const RenderedSports: JSX.Element[] = sportsList.map((sport: string, index: number): JSX.Element => {
