@@ -29,4 +29,4 @@ export const sportsSlice = createSlice({
 // Other code such as selectors can use the imported `RootState` type
 export const selectSports = (state: RootState) => state.sports;
 
-export default sportsSlice.reducer;
+export const sportsReducer = sportsSlice.reducer;
