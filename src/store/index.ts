@@ -3,7 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
   reducer: {
-    sports: sportsReducer,
+    sports: sportsSlice.reducer,
     // seasons: seasonsReducer,
     // games: gamesReducer,
     // gamesDetails: gamesDetailsReducer,
