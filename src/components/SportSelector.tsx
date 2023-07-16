@@ -26,7 +26,6 @@ const SportSelector: React.FC = (): JSX.Element => {
   return (
     <>
       <div>
-        <h1>Game Stats</h1>
         <p>Please select a sport to continue</p>
         {RenderedSports}
       </div>
