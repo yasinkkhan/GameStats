@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAppSelector, useAppDispatch } from '@/hooks';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 
