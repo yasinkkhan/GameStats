@@ -27,10 +27,13 @@ export const sportsSlice = createSlice({
     setSelectedSport: (state, action: PayloadAction<string>) => {
       state.selectedSport = action.payload;
     },
+    unsetSelectedSport: (state) => {
+      state.selectedSport = '';
+    },
   },
 });
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectSports = (state: RootState) => state.sports;
 export const sportsReducer = sportsSlice.reducer;
-export const { setSelectedSport } = sportsSlice.actions;
+export const { setSelectedSport, unsetSelectedSport } = sportsSlice.actions;
