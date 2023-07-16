@@ -3,7 +3,7 @@ import type { RootState } from '../../store';
 
 // Define a type for the slice state
 interface SportsState {
-  sports: string[];
+  sportsList: string[];
   selectedSport: string;
   // seasons
   // selectedSeason
@@ -15,7 +15,7 @@ interface SportsState {
 
 // Define the initial state using that type
 const initialState = {
-  sports: ['NBA', 'NHL', 'MLB', 'NFL', 'EPL', 'IPL'],
+  sportsList: ['NBA', 'NHL', 'MLB', 'NFL', 'EPL', 'IPL'],
   selectedSport: '',
 } as SportsState;
 

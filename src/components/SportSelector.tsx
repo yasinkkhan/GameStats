@@ -1,22 +1,16 @@
+import React, { useEffect } from 'react';
+import { useAppSelector, useAppDispatch } from '@/hooks';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 
-// interface SportsSelectorComponentProps {
-//   sportsList: string[];
-//   selectedSportHandler: (sport: string) => void;
-// }
-
-// const SportSelector: React.FC<SportsSelectorComponentProps> = ({
-//   sportsList,
-//   selectedSportHandler,
-// }): JSX.Element => {
 const SportSelector: React.FC = (): JSX.Element => {
-  const handleClick = (sport: string) => {
-    // selectedSportHandler(sport);
-  };
+  const dispatch = useAppDispatch();
+  const sportsList = useAppSelector((state) => {
+    return state.sports.sportsList;
+  });
 
   const RenderedSports: JSX.Element[] = sportsList.map((sport: string, index: number): JSX.Element => {
     return (
-      <Card key={index} onClick={() => handleClick(sport)} className="my-2">
+      <Card key={index} className="my-2">
         <CardHeader>
           <CardTitle>{sport}</CardTitle>
         </CardHeader>
