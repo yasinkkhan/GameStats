@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAppSelector, useAppDispatch } from '@/hooks';
+import { setSelectedSport } from '@/store/slices/sportsSlice';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 
 const SportSelector: React.FC = (): JSX.Element => {
@@ -8,9 +9,13 @@ const SportSelector: React.FC = (): JSX.Element => {
     return state.sports.sportsList;
   });
 
+  const setSelectedSportHandler = (sportName: string) => {
+    dispatch(setSelectedSport(sportName));
+  };
+
   const RenderedSports: JSX.Element[] = sportsList.map((sport: string, index: number): JSX.Element => {
     return (
-      <Card key={index} className="my-2">
+      <Card key={index} onClick={() => setSelectedSportHandler(sport)} className="my-2">
         <CardHeader>
           <CardTitle>{sport}</CardTitle>
         </CardHeader>
