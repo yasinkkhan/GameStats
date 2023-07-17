@@ -15,7 +15,7 @@ const SportSelector: React.FC = (): JSX.Element => {
 
   const RenderedSports: JSX.Element[] = sportsList.map((sport: string, index: number): JSX.Element => {
     return (
-      <Card key={index} onClick={() => setSelectedSportHandler(sport)} className="my-2">
+      <Card key={index} onClick={() => setSelectedSportHandler(sport)} className="my-2 border-2 border-black">
         <CardHeader>
           <CardTitle>{sport}</CardTitle>
         </CardHeader>
