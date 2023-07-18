@@ -2,7 +2,7 @@ import { nbaApiSecrets } from '@/api/secrets';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const nbaApi = createApi({
-  reducerPath: 'nbpaApi',
+  reducerPath: 'nbaApi',
   baseQuery: fetchBaseQuery({
     baseUrl: nbaApiSecrets['baseUrl'],
     prepareHeaders: (headers) => {
@@ -12,8 +12,10 @@ export const nbaApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getAllNbaSeason: builder.query({
-      query: () => 'Hello',
+    getAllNbaSeasons: builder.query({
+      query: () => 'seasons/',
     }),
   }),
 });
+
+export const { useGetAllNbaSeasonsQuery } = nbaApi;
