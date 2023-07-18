@@ -18,4 +18,5 @@ export const nbaApi = createApi({
   }),
 });
 
+export const nbaApiReducer = nbaApi.reducer;
 export const { useGetAllNbaSeasonsQuery } = nbaApi;
