@@ -1,3 +1,3 @@
 import React from 'react';
 import { useAppSelector, useAppDispatch } from '@/hooks';
-import { setSelectedSport } from '@/store/slices/sportsSlice';
+import { setSelectedSeason } from '@/store/slices/sportsSlice';
