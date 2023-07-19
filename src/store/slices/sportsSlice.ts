@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../store';
-import { nbaApi } from '@/store/apis/nbaApiSlice';
+import { nbaApi, useGetAllNbaSeasonsQuery } from '@/store/apis/nbaApiSlice';
 
 // Define a type for the slice state
 interface SportsState {
@@ -28,7 +28,6 @@ export const sportsSlice = createSlice({
   reducers: {
     setSelectedSport: (state, action: PayloadAction<string>) => {
       state.selectedSport = action.payload;
-      // nbaApi.endpoints.getAllNbaSeasons.initiate('');
     },
     unsetSelectedSport: (state) => {
       state.selectedSport = '';
@@ -41,8 +40,18 @@ export const sportsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addMatcher(nbaApi.endpoints.getAllNbaSeasons.matchFulfilled, (state, action) => {
-      state.seasonsList = action.payload.response;
+    // Note: Realized later that I don't actually also need to hold the entire list of
+    // seasons but leaving it here for learning purposes
+    // builder.addMatcher(nbaApi.endpoints.getAllNbaSeasons.matchFulfilled, (state, action) => {
+    //   state.seasonsList = action.payload.response;
+    // });
+    builder.addCase(setSelectedSport, (state, action) => {
+      // Need to handle error and isLoading situations later
+      const { data, error, isLoading } = useGetAllNbaSeasonsQuery('');
+
+      if (data) {
+        state.seasonsList = data.response;
+      }
     });
   },
 });
