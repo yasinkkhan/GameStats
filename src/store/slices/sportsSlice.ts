@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../store';
-import { useGetAllNbaSeasonsQuery } from '@/store/apis/nbaApiSlice';
+import { nbaApi } from '@/store/apis/nbaApiSlice';
 
 // Define a type for the slice state
 interface SportsState {
@@ -24,7 +24,6 @@ const initialState = {
 
 export const sportsSlice = createSlice({
   name: 'sports',
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
     setSelectedSport: (state, action: PayloadAction<string>) => {
@@ -33,6 +32,11 @@ export const sportsSlice = createSlice({
     unsetSelectedSport: (state) => {
       state.selectedSport = '';
     },
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(nbaApi.endpoints.getAllNbaSeasons.matchFulfilled, (state, action) => {
+      state.seasons = action.payload.response;
+    });
   },
 });
 
