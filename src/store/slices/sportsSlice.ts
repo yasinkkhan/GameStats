@@ -6,6 +6,7 @@ import { useGetAllNbaSeasonsQuery } from '@/store/apis/nbaApiSlice';
 interface SportsState {
   sportsList: string[];
   selectedSport: string;
+  seasons: string[];
   // seasons
   // selectedSeason
   // selectedSeasonStartDate
@@ -18,6 +19,7 @@ interface SportsState {
 const initialState = {
   sportsList: ['NBA', 'NHL', 'MLB', 'NFL', 'EPL', 'IPL'],
   selectedSport: '',
+  seasons: [],
 } as SportsState;
 
 export const sportsSlice = createSlice({
