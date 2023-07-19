@@ -6,7 +6,8 @@ import { nbaApi } from '@/store/apis/nbaApiSlice';
 interface SportsState {
   sportsList: string[];
   selectedSport: string;
-  seasons: string[];
+  seasonsList: string[];
+  selectedSeason: string;
   // seasons
   // selectedSeason
   // selectedSeasonStartDate
@@ -19,7 +20,8 @@ interface SportsState {
 const initialState = {
   sportsList: ['NBA', 'NHL', 'MLB', 'NFL', 'EPL', 'IPL'],
   selectedSport: '',
-  seasons: [],
+  seasonsList: [],
+  selectedSeason: '',
 } as SportsState;
 
 export const sportsSlice = createSlice({
@@ -35,7 +37,7 @@ export const sportsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(nbaApi.endpoints.getAllNbaSeasons.matchFulfilled, (state, action) => {
-      state.seasons = action.payload.response;
+      state.seasonsList = action.payload.response;
     });
   },
 });
