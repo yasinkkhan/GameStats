@@ -34,6 +34,12 @@ export const sportsSlice = createSlice({
     unsetSelectedSport: (state) => {
       state.selectedSport = '';
     },
+    setSelectedSeason: (state, action: PayloadAction<string>) => {
+      state.selectedSeason = action.payload;
+    },
+    unsetSelectedSeason: (state) => {
+      state.selectedSeason = '';
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(nbaApi.endpoints.getAllNbaSeasons.matchFulfilled, (state, action) => {
