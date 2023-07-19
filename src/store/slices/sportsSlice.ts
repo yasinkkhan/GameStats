@@ -8,8 +8,6 @@ interface SportsState {
   selectedSport: string;
   seasonsList: string[];
   selectedSeason: string;
-  // seasons
-  // selectedSeason
   // selectedSeasonStartDate
   // selectedSeasonEndDate
   // selectedDate
@@ -30,6 +28,7 @@ export const sportsSlice = createSlice({
   reducers: {
     setSelectedSport: (state, action: PayloadAction<string>) => {
       state.selectedSport = action.payload;
+      // nbaApi.endpoints.getAllNbaSeasons.initiate('');
     },
     unsetSelectedSport: (state) => {
       state.selectedSport = '';
