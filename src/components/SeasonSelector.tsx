@@ -19,7 +19,8 @@ const SeasonSelector: React.FC = (): JSX.Element => {
   } else if (error) {
     renderedSeasons = <p>{error.toString()}</p>;
   } else {
-    renderedSeasons = data.response.map((season: number, index: number): JSX.Element => {
+    const sortedSeasons = [...data.response].sort((a, b) => b - a);
+    renderedSeasons = sortedSeasons.map((season: number, index: number): JSX.Element => {
       return (
         <Card
           key={index}
