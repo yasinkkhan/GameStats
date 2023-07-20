@@ -7,26 +7,19 @@ import { useGetAllNbaSeasonsQuery } from '@/store/apis/nbaApiSlice';
 const SeasonSelector: React.FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
-  // How can I handle loading and error states like this?
-  // An API call is being made in the background
-  // using a different slice
-  const { loading, error, list } = useAppSelector((state) => {
-    return state.sports.seasonsList;
-  });
-
-  // const { data, error, isLoading } = useGetAllNbaSeasonsQuery('');
+  const { data, error, isLoading } = useGetAllNbaSeasonsQuery('');
 
   const setSelectedSeasonHandler = (season: string) => {
     dispatch(setSelectedSeason(season));
   };
 
   let renderedSeasons;
-  if (loading) {
+  if (isLoading) {
     renderedSeasons = <p>Loading Seasons...</p>;
   } else if (error) {
-    renderedSeasons = <p>{error}</p>;
+    renderedSeasons = <p>{error.toString()}</p>;
   } else {
-    renderedSeasons = list.map((season: string, index: number): JSX.Element => {
+    renderedSeasons = data.response.map((season: string, index: number): JSX.Element => {
       return (
         <Card
           key={index}
@@ -40,27 +33,6 @@ const SeasonSelector: React.FC = (): JSX.Element => {
       );
     });
   }
-
-  // let renderedSeasons;
-  // if (isLoading) {
-  //   renderedSeasons = <p>Loading Seasons...</p>;
-  // } else if (error) {
-  //   renderedSeasons = <p>Error</p>;
-  // } else {
-  //   renderedSeasons = data.response.map((season: string, index: number): JSX.Element => {
-  //     return (
-  //       <Card
-  //         key={index}
-  //         onClick={() => setSelectedSeasonHandler(season)}
-  //         className="my-2 border-2 border-black"
-  //       >
-  //         <CardHeader>
-  //           <CardTitle>{season}</CardTitle>
-  //         </CardHeader>
-  //       </Card>
-  //     );
-  //   });
-  // }
 
   return (
     <>
