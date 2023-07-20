@@ -10,7 +10,7 @@ const SeasonSelector: React.FC = (): JSX.Element => {
   // How can I handle loading and error states like this?
   // An API call is being made in the background
   // using a different slice
-  const seasonsList = useAppSelector((state) => {
+  const { loading, error, list } = useAppSelector((state) => {
     return state.sports.seasonsList;
   });
 
@@ -19,6 +19,27 @@ const SeasonSelector: React.FC = (): JSX.Element => {
   const setSelectedSeasonHandler = (season: string) => {
     dispatch(setSelectedSeason(season));
   };
+
+  let renderedSeasons;
+  if (loading) {
+    renderedSeasons = <p>Loading Seasons...</p>;
+  } else if (error) {
+    renderedSeasons = <p>{error}</p>;
+  } else {
+    renderedSeasons = list.map((season: string, index: number): JSX.Element => {
+      return (
+        <Card
+          key={index}
+          onClick={() => setSelectedSeasonHandler(season)}
+          className="my-2 border-2 border-black"
+        >
+          <CardHeader>
+            <CardTitle>{season}</CardTitle>
+          </CardHeader>
+        </Card>
+      );
+    });
+  }
 
   // let renderedSeasons;
   // if (isLoading) {
