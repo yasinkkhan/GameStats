@@ -26,8 +26,11 @@ export const nbaApi = createApi({
       //   return sortedSeasons;
       // },
     }),
+    getAllGamesForSeason: builder.query({
+      query: (season: number) => `/games/?season=${season}`,
+    }),
   }),
 });
 
 export const nbaApiReducer = nbaApi.reducer;
-export const { useGetAllNbaSeasonsQuery } = nbaApi;
+export const { useGetAllNbaSeasonsQuery, useGetAllGamesForSeasonQuery } = nbaApi;
