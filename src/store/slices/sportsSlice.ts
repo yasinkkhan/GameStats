@@ -6,8 +6,8 @@ import { nbaApi } from '@/store/apis/nbaApiSlice';
 interface SportsState {
   sportsList: string[];
   selectedSport: string;
-  seasonsList: string[];
-  selectedSeason: string;
+  seasonsList: number[];
+  selectedSeason: number | null;
   // selectedSeasonStartDate
   // selectedSeasonEndDate
   // selectedDate
@@ -19,7 +19,7 @@ const initialState = {
   sportsList: ['NBA', 'NHL', 'MLB', 'NFL', 'EPL', 'IPL'],
   selectedSport: '',
   seasonsList: [],
-  selectedSeason: '',
+  selectedSeason: null,
 } as SportsState;
 
 export const sportsSlice = createSlice({
@@ -32,11 +32,11 @@ export const sportsSlice = createSlice({
     unsetSelectedSport: (state) => {
       state.selectedSport = '';
     },
-    setSelectedSeason: (state, action: PayloadAction<string>) => {
+    setSelectedSeason: (state, action: PayloadAction<number>) => {
       state.selectedSeason = action.payload;
     },
     unsetSelectedSeason: (state) => {
-      state.selectedSeason = '';
+      state.selectedSeason = null;
     },
   },
   extraReducers: (builder) => {

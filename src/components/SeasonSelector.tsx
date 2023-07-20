@@ -9,7 +9,7 @@ const SeasonSelector: React.FC = (): JSX.Element => {
 
   const { data, error, isLoading } = useGetAllNbaSeasonsQuery('');
 
-  const setSelectedSeasonHandler = (season: string) => {
+  const setSelectedSeasonHandler = (season: number) => {
     dispatch(setSelectedSeason(season));
   };
 
@@ -19,7 +19,7 @@ const SeasonSelector: React.FC = (): JSX.Element => {
   } else if (error) {
     renderedSeasons = <p>{error.toString()}</p>;
   } else {
-    renderedSeasons = data.response.map((season: string, index: number): JSX.Element => {
+    renderedSeasons = data.response.map((season: number, index: number): JSX.Element => {
       return (
         <Card
           key={index}
