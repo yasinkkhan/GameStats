@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppSelector, useAppDispatch } from '@/hooks';
+import { useAppDispatch } from '@/hooks';
 import { setSelectedSeason } from '@/store/slices/sportsSlice';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { useGetAllNbaSeasonsQuery } from '@/store/apis/nbaApiSlice';
