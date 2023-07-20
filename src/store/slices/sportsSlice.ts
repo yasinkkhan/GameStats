@@ -40,6 +40,7 @@ export const sportsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // TO DO
     // To avoid additional API calls to get the list of seasons for the same sport that was already picked
     // Still needs to be implemented because cannot conditionally call API through ReactHook from component
     builder.addMatcher(nbaApi.endpoints.getAllNbaSeasons.matchFulfilled, (state, action) => {
