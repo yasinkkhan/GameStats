@@ -8,7 +8,22 @@ const GameList: React.FC = (): JSX.Element => {
     skip: !selectedSeason, // Set skip to true when selectedSeason is null or undefined
   });
 
-  return <div>Hello</div>;
+  let renderedContent;
+  if (isLoading) {
+    renderedContent = <p>Loading...</p>;
+  } else if (error) {
+    // TO DO
+    // You need to confirm what type error actually is
+    // and handle it more gracefully
+    renderedContent = <p>{error.toString()}</p>;
+  } else if (data) {
+    console.log(data);
+    renderedContent = <p>Got data</p>;
+  } else {
+    renderedContent = <p>Something weird happened</p>;
+  }
+
+  return <div>{renderedContent}</div>;
 };
 
 export default GameList;
