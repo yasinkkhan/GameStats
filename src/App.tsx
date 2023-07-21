@@ -4,6 +4,7 @@ import { unsetSelectedSeason, unsetSelectedSport } from '@/store/slices/sportsSl
 import { Button } from '@/components/ui/button';
 import SportSelector from './components/SportSelector';
 import SeasonSelector from './components/SeasonSelector';
+import GameList from './components/GameList';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -33,6 +34,12 @@ function App() {
     }
   };
 
+  const showGameListComponent = () => {
+    if (selectedSport && selectedSeason) {
+      return <GameList />;
+    }
+  };
+
   return (
     <div className="max-w-screen-sm container mx-auto px-4 box-border border-2 border-sky-500 min-h-screen">
       <h1>Game Stats</h1>
@@ -41,6 +48,7 @@ function App() {
       </Button>
       {showSportSelectorComponent()}
       {showSeasonSelectorComponent()}
+      {showGameListComponent()}
     </div>
   );
 }
