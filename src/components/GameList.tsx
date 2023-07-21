@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '@/hooks';
+import React from 'react';
+import { useAppSelector } from '@/hooks';
 import { useGetAllGamesForSeasonQuery } from '@/store/apis/nbaApiSlice';
 
 const GameList: React.FC = (): JSX.Element => {
