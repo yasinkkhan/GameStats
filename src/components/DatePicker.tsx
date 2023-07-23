@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/hooks';
 import { setSelectedDate } from '@/store/slices/sportsSlice';
 
@@ -20,53 +21,35 @@ const DatePicker: React.FC<DatePickerProps> = ({ firstSelectableDate, lastSelect
 
   const dispatch = useAppDispatch();
 
-  const setSelectedDateHandler = (selectedDate: Date) => {
-    dispatch(setSelectedDate(selectedDate));
-  };
-
-  if (date) {
-    setSelectedDateHandler(date);
-  }
-
-  const selectedDate = useAppSelector((state) => {
-    return state.sports.selectedDate;
-  });
+  // TO DO
+  // You're getting some error here to do with typing
+  useEffect(() => {
+    if (date) {
+      dispatch(setSelectedDate(date));
+    }
+  }, [date]);
 
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button
           variant={'outline'}
-          className={cn(
-            'w-[280px] justify-start text-left font-normal',
-            !selectedDate && 'text-muted-foreground'
-          )}
+          className={cn('w-[280px] justify-start text-left font-normal', !date && 'text-muted-foreground')}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
-          {selectedDate ? format(selectedDate, 'PPP') : <span>Pick a date</span>}
+          {date ? format(date, 'PPP') : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
-        {/* Use ternary operator to conditionally set the selected and onSelect props */}
-        {selectedDate !== null ? (
-          <Calendar
-            mode="single"
-            defaultMonth={firstSelectableDate}
-            fromDate={firstSelectableDate}
-            toDate={lastSelectableDate}
-            selected={date}
-            onSelect={setDate}
-            initialFocus
-          />
-        ) : (
-          <Calendar
-            mode="single"
-            defaultMonth={firstSelectableDate}
-            fromDate={firstSelectableDate}
-            toDate={lastSelectableDate}
-            initialFocus
-          />
-        )}
+        <Calendar
+          mode="single"
+          defaultMonth={firstSelectableDate}
+          fromDate={firstSelectableDate}
+          toDate={lastSelectableDate}
+          selected={date}
+          onSelect={setDate}
+          initialFocus
+        />
       </PopoverContent>
     </Popover>
   );

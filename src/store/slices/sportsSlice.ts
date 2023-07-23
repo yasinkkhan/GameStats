@@ -59,6 +59,7 @@ export const sportsSlice = createSlice({
       console.log(action.payload.response);
 
       const allGames = action.payload.response;
+      // TO DO - Figure out how to type the arguments in this function correctly
       // Figure out the date of the first game in the season, and populate seasonFirstGame
       const earliestDate = allGames.reduce((earliest, currentGame) => {
         const currentDate = new Date(currentGame.date.start);
