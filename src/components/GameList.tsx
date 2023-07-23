@@ -52,7 +52,7 @@ const GameList: React.FC = (): JSX.Element => {
   return (
     <div>
       <p>The first selectable date is: {seasonFirstGameDate}</p>
-      <p>The last selectable date is: {seasonFirstGameDate}</p>
+      <p>The last selectable date is: {seasonLastGameDate}</p>
       {renderCalendarComponent}
     </div>
   );

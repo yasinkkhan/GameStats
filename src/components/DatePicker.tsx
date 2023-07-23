@@ -30,7 +30,6 @@ const DatePicker: React.FC<DatePickerProps> = ({ firstSelectableDate, lastSelect
         <Calendar
           mode="single"
           defaultMonth={firstSelectableDate}
-          fromMonth={firstSelectableDate}
           fromDate={firstSelectableDate}
           toDate={lastSelectableDate}
           selected={date}
