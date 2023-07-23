@@ -29,6 +29,8 @@ const DatePicker: React.FC<DatePickerProps> = ({ firstSelectableDate, lastSelect
     }
   }, [date]);
 
+  // TO DO
+  // The calendar does not close after a date has been selected
   return (
     <Popover>
       <PopoverTrigger asChild>
