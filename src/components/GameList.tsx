@@ -22,7 +22,7 @@ const GameList: React.FC = (): JSX.Element => {
     // and the last game in the season directly in this component
     // to populate the selectable dates in the calendar
     // I want to do this in my reducers instead
-    console.log(data);
+    // console.log(data);
     renderedContent = <p>Got data</p>;
   } else {
     renderedContent = <p>Something weird happened</p>;

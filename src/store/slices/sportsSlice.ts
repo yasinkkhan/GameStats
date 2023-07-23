@@ -8,6 +8,9 @@ interface SportsState {
   selectedSport: string;
   seasonsList: number[];
   selectedSeason: number | null;
+  seasonFirstGame: string;
+  seasonLastGame: string;
+  seasonGames: [];
   // selectedSeasonStartDate
   // selectedSeasonEndDate
   // selectedDate
@@ -20,6 +23,9 @@ const initialState = {
   selectedSport: '',
   seasonsList: [],
   selectedSeason: null,
+  seasonFirstGame: '',
+  seasonLastGame: '',
+  seasonGames: [],
 } as SportsState;
 
 export const sportsSlice = createSlice({
@@ -45,6 +51,17 @@ export const sportsSlice = createSlice({
     // Still needs to be implemented because cannot conditionally call API through ReactHook from component
     builder.addMatcher(nbaApi.endpoints.getAllNbaSeasons.matchFulfilled, (state, action) => {
       state.seasonsList = action.payload.response;
+    });
+
+    // Populate retrieved games into global state
+    builder.addMatcher(nbaApi.endpoints.getAllGamesForSeason.matchFulfilled, (state, action) => {
+      console.log(action.payload.response);
+      // Figure out the date of the first game in the season, and populate seasonFirstGame
+
+      // Figure out the date of the last game in the season, and populate seasonLastGame
+
+      // Load all retrived games into global state
+      state.seasonGames = action.payload.response;
     });
   },
 });
