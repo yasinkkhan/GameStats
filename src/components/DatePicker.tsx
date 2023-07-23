@@ -15,6 +15,10 @@ interface DatePickerProps {
 const DatePicker: React.FC<DatePickerProps> = ({ firstSelectableDate, lastSelectableDate }): JSX.Element => {
   const [date, setDate] = React.useState<Date>();
 
+  const handleSetSelectedDate = () => {
+    return '';
+  };
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -33,7 +37,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ firstSelectableDate, lastSelect
           fromDate={firstSelectableDate}
           toDate={lastSelectableDate}
           selected={date}
-          onSelect={setDate}
+          onSelect={handleSetSelectedDate}
           initialFocus
         />
       </PopoverContent>

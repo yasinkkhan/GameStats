@@ -11,7 +11,7 @@ interface SportsState {
   seasonFirstGameDate: string;
   seasonLastGameDate: string;
   seasonGames: [];
-  // selectedDate
+  selectedDate: Date | null;
 }
 
 // Define the initial state using that type
@@ -23,6 +23,7 @@ const initialState = {
   seasonFirstGameDate: '',
   seasonLastGameDate: '',
   seasonGames: [],
+  selectedDate: null,
 } as SportsState;
 
 export const sportsSlice = createSlice({
@@ -40,6 +41,9 @@ export const sportsSlice = createSlice({
     },
     unsetSelectedSeason: (state) => {
       state.selectedSeason = null;
+    },
+    setSelectedDate: (state, action: PayloadAction<Date>) => {
+      state.selectedDate = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -83,5 +87,10 @@ export const sportsSlice = createSlice({
 // Other code such as selectors can use the imported `RootState` type
 export const selectSports = (state: RootState) => state.sports;
 export const sportsReducer = sportsSlice.reducer;
-export const { setSelectedSport, unsetSelectedSport, setSelectedSeason, unsetSelectedSeason } =
-  sportsSlice.actions;
+export const {
+  setSelectedSport,
+  unsetSelectedSport,
+  setSelectedSeason,
+  unsetSelectedSeason,
+  setSelectedDate,
+} = sportsSlice.actions;
