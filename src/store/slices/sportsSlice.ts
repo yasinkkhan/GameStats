@@ -8,13 +8,10 @@ interface SportsState {
   selectedSport: string;
   seasonsList: number[];
   selectedSeason: number | null;
-  seasonFirstGame: string;
-  seasonLastGame: string;
+  seasonFirstGameDate: string;
+  seasonLastGameDate: string;
   seasonGames: [];
-  // selectedSeasonStartDate
-  // selectedSeasonEndDate
   // selectedDate
-  // gamesList
 }
 
 // Define the initial state using that type
@@ -23,8 +20,8 @@ const initialState = {
   selectedSport: '',
   seasonsList: [],
   selectedSeason: null,
-  seasonFirstGame: '',
-  seasonLastGame: '',
+  seasonFirstGameDate: '',
+  seasonLastGameDate: '',
   seasonGames: [],
 } as SportsState;
 
@@ -56,9 +53,26 @@ export const sportsSlice = createSlice({
     // Populate retrieved games into global state
     builder.addMatcher(nbaApi.endpoints.getAllGamesForSeason.matchFulfilled, (state, action) => {
       console.log(action.payload.response);
-      // Figure out the date of the first game in the season, and populate seasonFirstGame
 
+      const allGames = action.payload.response;
+      // Figure out the date of the first game in the season, and populate seasonFirstGame
+      const earliestDate = allGames.reduce((earliest, currentGame) => {
+        const currentDate = new Date(currentGame.date.start);
+        return currentDate < earliest ? currentDate : earliest;
+      }, new Date(allGames[0].date.start));
+
+      // Load date of earliest game in season into global state
+      state.seasonFirstGameDate = earliestDate.toISOString();
+
+      // TO DO - Figure out how to type the arguments in this function correctly
       // Figure out the date of the last game in the season, and populate seasonLastGame
+      const latestDate = allGames.reduce((latest, currentGame) => {
+        const currentDate = new Date(currentGame.date.start);
+        return currentDate > latest ? currentDate : latest;
+      }, new Date(allGames[0].date.start));
+
+      // Load date of latest game in season into global state
+      state.seasonLastGameDate = latestDate.toISOString();
 
       // Load all retrived games into global state
       state.seasonGames = action.payload.response;
