@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '@/hooks';
+import { useAppDispatch } from '@/hooks';
 import { setSelectedDate } from '@/store/slices/sportsSlice';
 
 import { format } from 'date-fns';
