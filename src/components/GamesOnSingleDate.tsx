@@ -1,28 +1,28 @@
 import React from 'react';
 import { useAppSelector } from '@/hooks';
 
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+
 const GamesOnSingleDate: React.FC = (): JSX.Element => {
   const gamesOnSelectedDate = useAppSelector((state) => state.sports.gamesOnSelectedDate);
 
   const renderedGames = gamesOnSelectedDate.map((game) => {
     console.log(game);
 
-    return <table></table>;
+    // To do
+    // Somehow need to type game properly
+    return (
+      <Card key={game.id}>
+        <CardContent>
+          <p>Card Content</p>
+        </CardContent>
+      </Card>
+    );
   });
 
   return (
     <>
-      <div>
-        <table>
-          <th>
-            <tr></tr>
-          </th>
-          <td>
-            <tr></tr>
-          </td>
-        </table>
-        {renderedGames}
-      </div>
+      <div>{renderedGames}</div>
     </>
   );
 };
