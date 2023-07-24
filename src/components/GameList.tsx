@@ -21,21 +21,38 @@ const GameList: React.FC = (): JSX.Element => {
     const seasonFirstGameDateObject = new Date(seasonFirstGameDate);
     const seasonLastGameDateObject = new Date(seasonLastGameDate);
 
+    // TO DO
+    // Extract this out into it's own utility function, you're repeating code here
+    // Get the year, month, and date from the Date object
+    const firstGameYear = seasonFirstGameDateObject.getFullYear();
+    const firstGameMonth = seasonFirstGameDateObject.getMonth() + 1; // Adding 1 because getMonth() returns 0-based index (January is 0)
+    const firstGameDate = seasonFirstGameDateObject.getDate();
+    const lastGameYear = seasonLastGameDateObject.getFullYear();
+    const lastGameMonth = seasonLastGameDateObject.getMonth() + 1; // Adding 1 because getMonth() returns 0-based index (January is 0)
+    const lastGameDate = seasonLastGameDateObject.getDate();
+
+    const firstGameFormattedDate = `${firstGameYear}-${firstGameMonth
+      .toString()
+      .padStart(2, '0')}-${firstGameDate.toString().padStart(2, '0')}`;
+    const lastGameFormattedDate = `${lastGameYear}-${lastGameMonth.toString().padStart(2, '0')}-${lastGameDate
+      .toString()
+      .padStart(2, '0')}`;
+
     renderCalendarComponent = (
-      <DatePicker
-        firstSelectableDate={seasonFirstGameDateObject}
-        lastSelectableDate={seasonLastGameDateObject}
-      />
+      <>
+        <p>The first selectable date is: {firstGameFormattedDate}</p>
+        <p>The last selectable date is: {lastGameFormattedDate}</p>
+        <DatePicker
+          firstSelectableDate={seasonFirstGameDateObject}
+          lastSelectableDate={seasonLastGameDateObject}
+        />
+      </>
     );
+  } else {
+    renderCalendarComponent = <p>Loading....</p>;
   }
 
-  return (
-    <div>
-      <p>The first selectable date is: {seasonFirstGameDate}</p>
-      <p>The last selectable date is: {seasonLastGameDate}</p>
-      {renderCalendarComponent}
-    </div>
-  );
+  return <div>{renderCalendarComponent}</div>;
 };
 
 export default GameList;
