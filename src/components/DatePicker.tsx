@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useAppDispatch } from '@/hooks';
+import { useAppSelector, useAppDispatch } from '@/hooks';
 import { setSelectedDate } from '@/store/slices/sportsSlice';
 
 import { format } from 'date-fns';
@@ -19,6 +19,8 @@ interface DatePickerProps {
 const DatePicker: React.FC<DatePickerProps> = ({ firstSelectableDate, lastSelectableDate }): JSX.Element => {
   const [date, setDate] = React.useState<Date>();
 
+  const seasonGames = useAppSelector((state) => state.sports.seasonGames);
+
   const dispatch = useAppDispatch();
 
   // TO DO
@@ -26,6 +28,17 @@ const DatePicker: React.FC<DatePickerProps> = ({ firstSelectableDate, lastSelect
   useEffect(() => {
     if (date) {
       dispatch(setSelectedDate(date.toISOString()));
+    }
+
+    // TO DO
+    // Need to fix type here for the game variable
+    if (date && seasonGames) {
+      // Find games on selected date
+      const gamesOnSelectedDate = seasonGames.filter(
+        (game: any) => game.date.start.split('T')[0] === date.toISOString().split('T')[0]
+      );
+
+      // Update global state with list of games on selected date
     }
   }, [date]);
 
