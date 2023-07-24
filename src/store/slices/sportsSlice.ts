@@ -56,8 +56,6 @@ export const sportsSlice = createSlice({
 
     // Populate retrieved games into global state
     builder.addMatcher(nbaApi.endpoints.getAllGamesForSeason.matchFulfilled, (state, action) => {
-      console.log(action.payload.response);
-
       const allGames = action.payload.response;
       // TO DO - Figure out how to type the arguments in this function correctly
       // Figure out the date of the first game in the season, and populate seasonFirstGame
