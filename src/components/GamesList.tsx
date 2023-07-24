@@ -3,12 +3,14 @@ import { useAppSelector } from '@/hooks';
 import { useGetAllGamesForSeasonQuery } from '@/store/apis/nbaApiSlice';
 
 import DatePicker from './DatePicker';
+import GamesOnSingleDate from './GamesOnSingleDate';
 
 const GameList: React.FC = (): JSX.Element => {
   const selectedSeason = useAppSelector((state) => state.sports.selectedSeason);
   const seasonFirstGameDate = useAppSelector((state) => state.sports.seasonFirstGameDate);
   const seasonLastGameDate = useAppSelector((state) => state.sports.seasonLastGameDate);
   const selectedDate = useAppSelector((state) => state.sports.selectedDate);
+  const gamesOnSelectedDate = useAppSelector((state) => state.sports.gamesOnSelectedDate);
 
   // TO DO
   // I don't like that I'm doing this here, I think doing this in the slices would be better.
@@ -55,8 +57,8 @@ const GameList: React.FC = (): JSX.Element => {
   }
 
   let renderGamesOnSelectedDate;
-  if (selectedDate) {
-    renderGamesOnSelectedDate = <p>A date has been selected!!!</p>;
+  if (selectedDate && gamesOnSelectedDate) {
+    renderGamesOnSelectedDate = <GamesOnSingleDate />;
   }
 
   return (

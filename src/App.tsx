@@ -17,6 +17,8 @@ function App() {
     return state.sports.selectedSeason;
   });
 
+  // TO DO
+  // You now have a lot more pieces of state to consider
   const unsetSelections = () => {
     dispatch(unsetSelectedSport());
     dispatch(unsetSelectedSeason());
