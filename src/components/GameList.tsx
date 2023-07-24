@@ -8,6 +8,7 @@ const GameList: React.FC = (): JSX.Element => {
   const selectedSeason = useAppSelector((state) => state.sports.selectedSeason);
   const seasonFirstGameDate = useAppSelector((state) => state.sports.seasonFirstGameDate);
   const seasonLastGameDate = useAppSelector((state) => state.sports.seasonLastGameDate);
+  const selectedDate = useAppSelector((state) => state.sports.selectedDate);
 
   // TO DO
   // I don't like that I'm doing this here, I think doing this in the slices would be better.
@@ -52,7 +53,17 @@ const GameList: React.FC = (): JSX.Element => {
     renderCalendarComponent = <p>Loading....</p>;
   }
 
-  return <div>{renderCalendarComponent}</div>;
+  let renderGamesOnSelectedDate;
+  if (selectedDate) {
+    return <p>A date has been selected!!!</p>;
+  }
+
+  return (
+    <div>
+      {renderCalendarComponent}
+      {renderGamesOnSelectedDate}
+    </div>
+  );
 };
 
 export default GameList;
