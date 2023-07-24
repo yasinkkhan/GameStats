@@ -11,7 +11,7 @@ interface SportsState {
   seasonFirstGameDate: string;
   seasonLastGameDate: string;
   seasonGames: [];
-  selectedDate: Date | null;
+  selectedDate: string | null;
 }
 
 // Define the initial state using that type
@@ -42,7 +42,7 @@ export const sportsSlice = createSlice({
     unsetSelectedSeason: (state) => {
       state.selectedSeason = null;
     },
-    setSelectedDate: (state, action: PayloadAction<Date>) => {
+    setSelectedDate: (state, action: PayloadAction<string>) => {
       state.selectedDate = action.payload;
     },
   },

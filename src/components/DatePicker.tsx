@@ -25,7 +25,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ firstSelectableDate, lastSelect
   // You're getting some error here to do with typing
   useEffect(() => {
     if (date) {
-      dispatch(setSelectedDate(date));
+      dispatch(setSelectedDate(date.toISOString()));
     }
   }, [date]);
 
