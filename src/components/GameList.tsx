@@ -17,6 +17,7 @@ const GameList: React.FC = (): JSX.Element => {
     skip: !selectedSeason, // Set skip to true when selectedSeason is null or undefined
   });
 
+  // TO DO
   let renderCalendarComponent;
   if (seasonFirstGameDate != '' && seasonLastGameDate != '') {
     const seasonFirstGameDateObject = new Date(seasonFirstGameDate);
@@ -55,7 +56,7 @@ const GameList: React.FC = (): JSX.Element => {
 
   let renderGamesOnSelectedDate;
   if (selectedDate) {
-    return <p>A date has been selected!!!</p>;
+    renderGamesOnSelectedDate = <p>A date has been selected!!!</p>;
   }
 
   return (
