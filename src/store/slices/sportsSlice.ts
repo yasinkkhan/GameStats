@@ -22,8 +22,8 @@ const initialState = {
   selectedSeason: null,
   seasonFirstGameDate: '',
   seasonLastGameDate: '',
-  seasonGames: [],
   selectedDate: null,
+  seasonGames: [],
 } as SportsState;
 
 export const sportsSlice = createSlice({
