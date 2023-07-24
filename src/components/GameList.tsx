@@ -12,7 +12,7 @@ const GameList: React.FC = (): JSX.Element => {
   // TO DO
   // I don't like that I'm doing this here, I think doing this in the slices would be better.
   // (MAY BE)
-  const { data, error, isLoading } = useGetAllGamesForSeasonQuery(selectedSeason as number, {
+  useGetAllGamesForSeasonQuery(selectedSeason as number, {
     skip: !selectedSeason, // Set skip to true when selectedSeason is null or undefined
   });
 
