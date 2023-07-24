@@ -4,7 +4,7 @@ import { unsetSelectedSeason, unsetSelectedSport } from '@/store/slices/sportsSl
 import { Button } from '@/components/ui/button';
 import SportSelector from './components/SportSelector';
 import SeasonSelector from './components/SeasonSelector';
-import GameList from './components/GameList';
+import GameList from './components/GamesList';
 
 function App() {
   const dispatch = useAppDispatch();
