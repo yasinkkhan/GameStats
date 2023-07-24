@@ -3,6 +3,9 @@ import type { RootState } from '../../store';
 import { nbaApi } from '@/store/apis/nbaApiSlice';
 
 // Define a type for the slice state
+// To do
+// You can handle the definition of some of these types better
+// Such as the types that are just set to be an array
 interface SportsState {
   sportsList: string[];
   selectedSport: string;
@@ -11,6 +14,7 @@ interface SportsState {
   seasonFirstGameDate: string;
   seasonLastGameDate: string;
   seasonGames: [];
+  gamesOnSelectedDate: [];
   selectedDate: string | null;
 }
 
@@ -23,6 +27,7 @@ const initialState = {
   seasonFirstGameDate: '',
   seasonLastGameDate: '',
   selectedDate: null,
+  gamesOnSelectedDate: [],
   seasonGames: [],
 } as SportsState;
 
