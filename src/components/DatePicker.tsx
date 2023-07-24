@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/hooks';
-import { setSelectedDate } from '@/store/slices/sportsSlice';
+import { setSelectedDate, populateGamesOnSelectedDate } from '@/store/slices/sportsSlice';
 
 import { format } from 'date-fns';
 import { Calendar as CalendarIcon } from 'lucide-react';
@@ -39,6 +39,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ firstSelectableDate, lastSelect
       );
 
       // Update global state with list of games on selected date
+      dispatch(populateGamesOnSelectedDate(gamesOnSelectedDate));
     }
   }, [date]);
 

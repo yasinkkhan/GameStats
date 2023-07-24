@@ -50,6 +50,13 @@ export const sportsSlice = createSlice({
     setSelectedDate: (state, action: PayloadAction<string>) => {
       state.selectedDate = action.payload;
     },
+    // TO DO
+    // Fix this "any" type, you're passing in an array of objects where
+    // each object is a single game
+    // This is going to get interesting with multiple sports
+    populateGamesOnSelectedDate: (state, action: PayloadAction<any>) => {
+      state.gamesOnSelectedDate = action.payload;
+    },
   },
   extraReducers: (builder) => {
     // TO DO
@@ -97,4 +104,5 @@ export const {
   setSelectedSeason,
   unsetSelectedSeason,
   setSelectedDate,
+  populateGamesOnSelectedDate,
 } = sportsSlice.actions;
