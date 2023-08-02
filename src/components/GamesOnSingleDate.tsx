@@ -3,10 +3,15 @@ import { useAppSelector } from '@/hooks';
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
+// Define the interface for the game object
+interface Game {
+  id: number;
+}
+
 const GamesOnSingleDate: React.FC = (): JSX.Element => {
   const gamesOnSelectedDate = useAppSelector((state) => state.sports.gamesOnSelectedDate);
 
-  const renderedGames = gamesOnSelectedDate.map((game: { id: number }) => {
+  const renderedGames = gamesOnSelectedDate.map((game: Game) => {
     console.log(game);
 
     return (
