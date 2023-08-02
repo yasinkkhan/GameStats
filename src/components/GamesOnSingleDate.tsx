@@ -19,8 +19,20 @@ const GamesOnSingleDate: React.FC = (): JSX.Element => {
         <CardContent>
           <table>
             <tbody>
-              <tr></tr>
-              <tr></tr>
+              <tr>
+                <td>
+                  <img
+                    className="max-w-10 max-h-10"
+                    src={game.teams.visitors.logo}
+                    alt={game.teams.visitors.name}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img className="max-w-10 max-h-10" src={game.teams.home.logo} alt={game.teams.home.name} />
+                </td>
+              </tr>
             </tbody>
           </table>
         </CardContent>
