@@ -10,10 +10,14 @@ const GamesOnSingleDate: React.FC = (): JSX.Element => {
     console.log(game);
 
     return (
-      // How can I define a type for my game object in this section
       <Card key={game.id}>
         <CardContent>
-          <p>Card Content</p>
+          <table>
+            <tbody>
+              <tr></tr>
+              <tr></tr>
+            </tbody>
+          </table>
         </CardContent>
       </Card>
     );
