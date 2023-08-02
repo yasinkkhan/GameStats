@@ -6,12 +6,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 const GamesOnSingleDate: React.FC = (): JSX.Element => {
   const gamesOnSelectedDate = useAppSelector((state) => state.sports.gamesOnSelectedDate);
 
-  const renderedGames = gamesOnSelectedDate.map((game) => {
+  const renderedGames = gamesOnSelectedDate.map((game: { id: number }) => {
     console.log(game);
 
-    // To do
-    // Somehow need to type game properly
     return (
+      // How can I define a type for my game object in this section
       <Card key={game.id}>
         <CardContent>
           <p>Card Content</p>
