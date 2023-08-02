@@ -17,10 +17,10 @@ const GamesOnSingleDate: React.FC = (): JSX.Element => {
     return (
       <Card key={game.id}>
         <CardContent>
-          <table>
-            <tbody>
-              <tr>
-                <td>
+          <table className="border">
+            <tbody className="border">
+              <tr className="border">
+                <td className="border">
                   <img
                     className="max-w-10 max-h-10"
                     src={game.teams.visitors.logo}
@@ -28,8 +28,8 @@ const GamesOnSingleDate: React.FC = (): JSX.Element => {
                   />
                 </td>
               </tr>
-              <tr>
-                <td>
+              <tr className="border">
+                <td className="border">
                   <img className="max-w-10 max-h-10" src={game.teams.home.logo} alt={game.teams.home.name} />
                 </td>
               </tr>
